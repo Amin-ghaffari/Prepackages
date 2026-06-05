@@ -970,16 +970,20 @@ if run_btn:
             except:
                 return ''
 
-  styled_df = df_show.style.map(
-    highlight_result, 
-    subset=['نتیجه نهایی']
-).map(
-    highlight_risk, 
-    subset=['امتیاز ریسک']
-).set_properties(**{
-    'text-align': 'right',
-    'font-family': 'Vazirmatn, Tahoma, sans-serif'
-})
+
+    # اعمال استایل
+    styled_df = df_show.style.map(
+        highlight_result, 
+        subset=['نتیجه نهایی']
+    ).map(
+        highlight_risk, 
+        subset=['امتیاز ریسک']
+    ).set_properties(**{
+        'text-align': 'right',
+        'font-family': 'Vazirmatn, Tahoma, sans-serif'
+    })
+    
+    st.dataframe(styled_df, use_container_width=True)
 
         # نمایش جدول
         st.dataframe(
